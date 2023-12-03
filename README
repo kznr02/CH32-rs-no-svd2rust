@@ -1,0 +1,35 @@
+# CH32-RS (WIP)
+
+## Inroduction
+
+This project is attend to implement rust on wch-ch32 microcontroller, now in a very early stage. We don't use svd2rust, it will generate a lot of confusing code just like a piece of sh*t.
+
+Now working on
+
+- Register Layer
+  - [ ] PWR
+  - [x] RCC
+  - [ ] BKP
+  - [ ] CRC
+  - [ ] RTC
+  - [ ] IWDG
+  - [ ] WWDG
+  - [ ] NVIC/PFIC
+  - [ ] GPIO/AFIO
+  - [ ] DMA
+  - [ ] ADC
+  - [ ] TKEY
+  - [ ] ADTM
+  - [ ] GPTM
+  - [ ] DAC
+  - [ ] USART
+  - [ ] I2C
+  - [ ] SPI
+  - [ ] USBD
+  - [ ] USBHD
+  - [ ] CAN
+  - [ ] ESIG
+  - [ ] FLASH
+  - [ ] EXTEN
+  - [ ] DBG
+  

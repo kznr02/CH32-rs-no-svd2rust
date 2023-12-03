@@ -1,0 +1,15 @@
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+resolver = "2"
+members = [
+    "ch32-app",
+    "ch32-hal"
+]
+
+[workspace.dependencies]
+ch32-hal = { path = "ch32-hal"}
