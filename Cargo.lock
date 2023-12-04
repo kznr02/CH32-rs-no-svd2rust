@@ -37,6 +37,7 @@ dependencies = [
  "panic-halt",
  "riscv",
  "riscv-rt",
+ "vcell",
 ]
 
 [[package]]

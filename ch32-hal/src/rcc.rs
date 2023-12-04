@@ -29,16 +29,15 @@ impl RegRccCtlr {
 
 impl RegOpu32 for RegRccCtlr {
     fn read(&self) -> u32 {
-        unsafe { *(self.ptr.get()) }
+        unsafe { self.ptr.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.ptr.get()) = v;
+            self.ptr.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -57,16 +56,15 @@ impl RegRccCfgr0 {
 
 impl RegOpu32 for RegRccCfgr0 {
     fn read(&self) -> u32 {
-        unsafe { *(self.ptr.get()) }
+        unsafe { self.ptr.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.ptr.get()) = v;
+            self.ptr.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -81,16 +79,15 @@ impl RegRccintr {
 
 impl RegOpu32 for RegRccintr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -105,16 +102,15 @@ impl RegRccApb2prstr {
 
 impl RegOpu32 for RegRccApb2prstr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -129,16 +125,15 @@ impl RegRccApb1prstr {
 
 impl RegOpu32 for RegRccApb1prstr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -153,16 +148,15 @@ impl RegRccAhbpcenr {
 
 impl RegOpu32 for RegRccAhbpcenr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -177,16 +171,15 @@ impl RegRccApb2pcenr {
 
 impl RegOpu32 for RegRccApb2pcenr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -201,16 +194,15 @@ impl RegRccApb1pcenr {
 
 impl RegOpu32 for RegRccApb1pcenr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -225,15 +217,15 @@ impl RegRccBdctlr {
 
 impl RegOpu32 for RegRccBdctlr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
+
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -248,15 +240,15 @@ impl RegRccRstsckr {
 
 impl RegOpu32 for RegRccRstsckr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
+
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -271,16 +263,15 @@ impl RegRccAhbrstr {
 
 impl RegOpu32 for RegRccAhbrstr {
     fn read(&self) -> u32 {
-        unsafe { *(self.0.get()) }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
     where
         F: FnOnce(u32) -> u32,
     {
-        let v = f(self.read());
         unsafe {
-            *(self.0.get()) = v;
+            self.0.get().write_volatile(f(self.read()));
         }
     }
 }
@@ -311,7 +302,7 @@ impl RCC {
             apb1pcenr: RegRccApb1pcenr::new(),
             bdctlr: RegRccBdctlr::new(),
             rstsckr: RegRccRstsckr::new(),
-            ahbrstr: RegRccAhbrstr::new()
+            ahbrstr: RegRccAhbrstr::new(),
         }
     }
 }

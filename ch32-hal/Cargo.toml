@@ -9,6 +9,6 @@ edition = "2021"
 embedded-hal = { version = "*" }
 riscv = { version = "*" }
 bitflags ={ version = "*" }
-vcell = { version = "*" }
+vcell = { workspace = true }
 spin = { version = "*", features = []}
 good_memory_allocator = { version = "*" }

@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 panic-halt ={ version = "*" }
 ch32-hal = { workspace = true }
+vcell = { workspace = true }
 
 [dependencies.riscv]
 version =  "*"

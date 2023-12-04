@@ -14,3 +14,4 @@ members = [
 
 [workspace.dependencies]
 ch32-hal = { path = "ch32-hal"}
+vcell = { version = "*" }
