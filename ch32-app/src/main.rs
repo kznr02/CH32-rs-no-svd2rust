@@ -13,9 +13,10 @@ use riscv_rt::entry;
 fn main() -> ! {
     system_init();
     let mut gpioa = GPIOA::new();
+
     gpioa.cfglr.write(|mut v| {
         v &= 0xfffffff0;
-        // v |= (0x02 << 2);
+        v |= (0x01);
         v
     });
     loop {}
@@ -113,6 +114,11 @@ fn system_init() {
             ptr::write_volatile(0x40007000 as *mut u32, 1 << 8);
             ptr::write_volatile(0x40006c04 as *mut u16, 1);
         }
+
+        rcc.apb2pcenr.write(|mut v| {
+            v |= (1 << 2);
+            v
+        })
     } else {
         // user define
     }
