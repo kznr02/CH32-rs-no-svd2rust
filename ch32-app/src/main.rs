@@ -4,7 +4,7 @@
 #![feature(lazy_cell)]
 use panic_halt as _;
 
-use ch32_hal::{gpio::GPIOA, rcc::RCC, *};
+use ch32_hal::{gpio::GPIOA, pwr::PWR, rcc::RCC, *};
 use core::{cell::LazyCell, ptr};
 use riscv::asm;
 use riscv_rt::entry;
@@ -61,10 +61,10 @@ fn system_init() {
         v |= 0x00010000;
         v
     });
-    
+
     while hse_status.get() == 0 && start_up_counter.get() != 0x500 {
         hse_status.set(rcc.ctlr.read() & 0x00020000);
-        start_up_counter.set(start_up_counter.get()+1);
+        start_up_counter.set(start_up_counter.get() + 1);
     }
 
     if (rcc.ctlr.read() & 0x00020000) != 0 {
@@ -94,9 +94,7 @@ fn system_init() {
             v |= 0x01000000;
             v
         });
-        while rcc.ctlr.read() & 0x02000000 == 0 {
-            
-        }
+        while rcc.ctlr.read() & 0x02000000 == 0 {}
         rcc.cfgr0.write(|mut v| {
             v &= !0x03;
             v
@@ -105,15 +103,17 @@ fn system_init() {
             v |= 0x02;
             v
         });
-        while rcc.cfgr0.read() & 0x0c != 0x08 {
-            
-        }
+        while rcc.cfgr0.read() & 0x0c != 0x08 {}
 
-        unsafe {
-            ptr::write_volatile(0x4002101c as *mut u32 , 3 << 27);
-            ptr::write_volatile(0x40007000 as *mut u32, 1 << 8);
-            ptr::write_volatile(0x40006c04 as *mut u16, 1);
-        }
+        let mut pwr = PWR::new();
+        pwr.ctlr.write(|mut v| {
+            v |= (1 << 8);
+            v
+        });
+        rcc.apb1pcenr.write(|mut v| {
+            v |= (3 << 27);
+            v
+        });
 
         rcc.apb2pcenr.write(|mut v| {
             v |= (1 << 2);
@@ -122,23 +122,4 @@ fn system_init() {
     } else {
         // user define
     }
-}
-
-fn gpioa0_led_test() {
-    let mut current_mode: u32 = 0x00;
-    let mut current_pin: u32 = 0x00;
-    let mut pinpos: u32 = 0x00;
-    let mut pos: u32 = 0;
-    let mut tmpreg: u32 = 0x00;
-    let mut pinmask: u32 = 0x00;
-
-    current_mode = 0x10 & 0x0f;
-    if (0x10 & 0x10) != 0x00 {
-        current_mode |= 1;
-    }
-
-    if (0x01 & 0xff) != 0x00 {
-        todo!()
-    }
-
 }
