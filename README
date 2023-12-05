@@ -4,32 +4,23 @@
 
 This project is attend to implement rust on wch-ch32 microcontroller, now in a very early stage. We don't use svd2rust, it will generate a lot of confusing code just like a piece of sh*t.
 
-Now working on
+Now work well:
 
 - Register Layer
-  - [ ] PWR
+  - [x] PWR
   - [x] RCC
-  - [ ] BKP
-  - [ ] CRC
-  - [ ] RTC
-  - [ ] IWDG
-  - [ ] WWDG
-  - [ ] NVIC/PFIC
-  - [ ] GPIO/AFIO
-  - [ ] DMA
-  - [ ] ADC
-  - [ ] TKEY
-  - [ ] ADTM
-  - [ ] GPTM
-  - [ ] DAC
-  - [ ] USART
-  - [ ] I2C
-  - [ ] SPI
-  - [ ] USBD
-  - [ ] USBHD
-  - [ ] CAN
-  - [ ] ESIG
-  - [ ] FLASH
-  - [ ] EXTEN
-  - [ ] DBG
+  - [x] GPIO
+
+## Usage
+
+```shell
+  git clone https://github.com/kznr02/CH32-rs
+  cd CH32-rs
+  cargo build --package ch32-app
+  wlink flash target/riscv32imac-unknown-none-elf/debug/ch32-app
+```
+
+> Please connect LED on PA0, and build `ch32-app` package, flash with `wlink`, you will see the led on.
+> ![image](./doc/led.jpg)
+
   
