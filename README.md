@@ -5,7 +5,6 @@
 This project is attend to implement rust on wch-ch32 microcontroller, now in a very early stage. We don't use svd2rust, it will generate a lot of confusing code just like a piece of sh*t.
 
 Now work well:
-
 - Register Layer
   - [x] PWR
   - [x] RCC
@@ -22,5 +21,4 @@ Now work well:
 
 > Please connect LED on PA0, and build `ch32-app` package, flash with `wlink`, you will see the led on.
 > ![image](./doc/led.jpg)
-
   
