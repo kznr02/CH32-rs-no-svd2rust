@@ -2,6 +2,7 @@ use vcell::VolatileCell;
 
 use crate::RegOpu32;
 
+/// GPIO register address definitions
 const GPIO_BASE_ADDR: usize = 0x40010800;
 const GPIOA_CFGLR_ADDR: usize = GPIO_BASE_ADDR + 0x0000;
 const GPIOB_CFGLR_ADDR: usize = GPIO_BASE_ADDR + 0x0400;
@@ -31,6 +32,15 @@ const GPIOA_LCKR_ADDR: usize = GPIOA_CFGLR_ADDR + 0x18;
 const GPIOB_LCKR_ADDR: usize = GPIOB_CFGLR_ADDR + 0x18;
 const GPIOC_LCKR_ADDR: usize = GPIOC_CFGLR_ADDR + 0x18;
 const GPIOD_LCKR_ADDR: usize = GPIOD_CFGLR_ADDR + 0x18;
+
+/// AFIO Register address definitions
+const AFIO_BASE_ADDR: usize = 0x40010000;
+const AFIO_ECR_ADDR: usize = AFIO_BASE_ADDR + 0x00;
+const AFIO_PCFR_ADDR: usize = AFIO_BASE_ADDR + 0x04;
+const AFIO_EXTICR1_ADDR: usize = AFIO_BASE_ADDR + 0x08;
+const AFIO_EXTICR2_ADDR: usize = AFIO_BASE_ADDR + 0x0c;
+const AFIO_EXTICR3_ADDR: usize = AFIO_BASE_ADDR + 0x10;
+const AFIO_EXTICR4_ADDR: usize = AFIO_BASE_ADDR + 0x14;
 
 pub struct RegGpioACfglr(VolatileCell<*mut u32>);
 impl RegGpioACfglr {
@@ -373,17 +383,14 @@ impl RegGpioBBshr {
 }
 impl RegOpu32 for RegGpioBBshr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -395,17 +402,14 @@ impl RegGpioCBshr {
 }
 impl RegOpu32 for RegGpioCBshr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -417,17 +421,14 @@ impl RegGpioDBshr {
 }
 impl RegOpu32 for RegGpioDBshr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -439,17 +440,14 @@ impl RegGpioABcr {
 }
 impl RegOpu32 for RegGpioABcr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -461,17 +459,14 @@ impl RegGpioBBcr {
 }
 impl RegOpu32 for RegGpioBBcr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -483,17 +478,14 @@ impl RegGpioCBcr {
 }
 impl RegOpu32 for RegGpioCBcr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -505,17 +497,14 @@ impl RegGpioDBcr {
 }
 impl RegOpu32 for RegGpioDBcr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -527,17 +516,14 @@ impl RegGpioALckr {
 }
 impl RegOpu32 for RegGpioALckr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -549,17 +535,14 @@ impl RegGpioBLckr {
 }
 impl RegOpu32 for RegGpioBLckr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -571,17 +554,14 @@ impl RegGpioCLckr {
 }
 impl RegOpu32 for RegGpioCLckr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -593,17 +573,128 @@ impl RegGpioDLckr {
 }
 impl RegOpu32 for RegGpioDLckr {
     fn read(&self) -> u32 {
-        unsafe {
-            self.0.get().read_volatile()
-        }
+        unsafe { self.0.get().read_volatile() }
     }
 
     fn write<F>(&mut self, f: F)
-        where
-            F: FnOnce(u32) -> u32 {
-        unsafe {
-            self.0.get().write_volatile(f(self.read()))
-        }
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioEcr(VolatileCell<*mut u32>);
+impl RegAfioEcr {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_ECR_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioEcr {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioPcfr(VolatileCell<*mut u32>);
+impl RegAfioPcfr {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_PCFR_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioPcfr {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioExticr1(VolatileCell<*mut u32>);
+impl RegAfioExticr1 {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_EXTICR1_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioExticr1 {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioExticr2(VolatileCell<*mut u32>);
+impl RegAfioExticr2 {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_EXTICR2_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioExticr2 {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioExticr3(VolatileCell<*mut u32>);
+impl RegAfioExticr3 {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_EXTICR3_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioExticr3 {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
+    }
+}
+
+pub struct RegAfioExticr4(VolatileCell<*mut u32>);
+impl RegAfioExticr4 {
+    fn new() -> Self {
+        Self(VolatileCell::new(AFIO_EXTICR4_ADDR as *mut u32))
+    }
+}
+impl RegOpu32 for RegAfioExticr4 {
+    fn read(&self) -> u32 {
+        unsafe { self.0.get().read_volatile() }
+    }
+
+    fn write<F>(&mut self, f: F)
+    where
+        F: FnOnce(u32) -> u32,
+    {
+        unsafe { self.0.get().write_volatile(f(self.read())) }
     }
 }
 
@@ -614,7 +705,7 @@ pub struct GPIOA {
     pub outdr: RegGpioAOutdr,
     pub bshr: RegGpioABshr,
     pub bcr: RegGpioABcr,
-    pub lckr: RegGpioALckr
+    pub lckr: RegGpioALckr,
 }
 impl GPIOA {
     pub fn new() -> Self {
@@ -625,7 +716,7 @@ impl GPIOA {
             outdr: RegGpioAOutdr::new(),
             bshr: RegGpioABshr::new(),
             bcr: RegGpioABcr::new(),
-            lckr: RegGpioALckr::new()
+            lckr: RegGpioALckr::new(),
         }
     }
 }
@@ -637,7 +728,7 @@ pub struct GPIOB {
     pub outdr: RegGpioBOutdr,
     pub bshr: RegGpioBBshr,
     pub bcr: RegGpioBBcr,
-    pub lckr: RegGpioBLckr
+    pub lckr: RegGpioBLckr,
 }
 impl GPIOB {
     pub fn new() -> Self {
@@ -648,7 +739,7 @@ impl GPIOB {
             outdr: RegGpioBOutdr::new(),
             bshr: RegGpioBBshr::new(),
             bcr: RegGpioBBcr::new(),
-            lckr: RegGpioBLckr::new()
+            lckr: RegGpioBLckr::new(),
         }
     }
 }
@@ -660,9 +751,9 @@ pub struct GPIOC {
     pub outdr: RegGpioCOutdr,
     pub bshr: RegGpioCBshr,
     pub bcr: RegGpioCBcr,
-    pub lckr: RegGpioCLckr
+    pub lckr: RegGpioCLckr,
 }
-impl GPIOA {
+impl GPIOC {
     pub fn new() -> Self {
         Self {
             cfglr: RegGpioCCfglr::new(),
@@ -671,7 +762,7 @@ impl GPIOA {
             outdr: RegGpioCOutdr::new(),
             bshr: RegGpioCBshr::new(),
             bcr: RegGpioCBcr::new(),
-            lckr: RegGpioCLckr::new()
+            lckr: RegGpioCLckr::new(),
         }
     }
 }
@@ -683,7 +774,7 @@ pub struct GPIOD {
     pub outdr: RegGpioDOutdr,
     pub bshr: RegGpioDBshr,
     pub bcr: RegGpioDBcr,
-    pub lckr: RegGpioDLckr
+    pub lckr: RegGpioDLckr,
 }
 impl GPIOD {
     pub fn new() -> Self {
@@ -694,7 +785,28 @@ impl GPIOD {
             outdr: RegGpioDOutdr::new(),
             bshr: RegGpioDBshr::new(),
             bcr: RegGpioDBcr::new(),
-            lckr: RegGpioDLckr::new()
+            lckr: RegGpioDLckr::new(),
+        }
+    }
+}
+
+pub struct AFIO {
+    pub ecr: RegAfioEcr,
+    pub pcfr: RegAfioPcfr,
+    pub exticr1: RegAfioExticr1,
+    pub exticr2: RegAfioExticr2,
+    pub exticr3: RegAfioExticr3,
+    pub exticr4: RegAfioExticr4,
+}
+impl AFIO {
+    pub fn new() -> Self {
+        Self {
+            ecr: RegAfioEcr::new(),
+            pcfr: RegAfioPcfr::new(),
+            exticr1: RegAfioExticr1::new(),
+            exticr2: RegAfioExticr2::new(),
+            exticr3: RegAfioExticr3::new(),
+            exticr4: RegAfioExticr4::new(),
         }
     }
 }

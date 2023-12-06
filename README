@@ -10,6 +10,7 @@ Now work well:
   - [x] PWR
   - [x] RCC
   - [x] GPIO
+  - [x] AFIO
 
 ## Usage
 
